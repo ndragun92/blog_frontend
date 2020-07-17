@@ -1,0 +1,38 @@
+@import "colors";
+@import "typography";
+
+html {
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--always-dark);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--always-light);
+    border: 1px solid var(--always-dark);
+    &:hover {
+      background-color: var(--active-color-primary);
+    }
+  }
+  scrollbar-width: thin;
+  scrollbar-color: var(--always-light) var(--always-dark);
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+  background-color: var(--always-light);
+  color: var(--always-dark);
+}
+
+*:focus {
+  outline: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.body-overflow--hidden {
+  overflow: hidden;
+}

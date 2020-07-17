@@ -9,26 +9,35 @@
     "export": "nuxt export",
     "serve": "nuxt serve",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
-    "lint": "npm run lint:js && npm run lint:style"
+    "lint": "npm run lint:js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
-    "nuxt": "^2.13.0"
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@sweetalert2/theme-borderless": "^3.2.0",
+    "@sweetalert2/theme-wordpress-admin": "^3.2.0",
+    "cookie-universal-nuxt": "^2.1.4",
+    "moment": "^2.27.0",
+    "nuxt": "^2.13.0",
+    "nuxt-user-agent": "^1.2.2",
+    "nuxt-webfontloader": "^1.1.0",
+    "sweetalert2": "^9.17.0",
+    "vue-directive-tooltip": "^1.6.3",
+    "vue-lazyload": "^1.3.3",
+    "vue-multiselect": "^2.1.6",
+    "vuelidate": "^0.7.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
-    "stylelint": "^13.6.1",
-    "stylelint-config-prettier": "^8.0.1",
-    "stylelint-config-standard": "^20.0.0"
+    "sass-loader": "^9.0.2"
   }
 }

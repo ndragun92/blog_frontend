@@ -1,0 +1,16 @@
+input, select, textarea, button {
+  &:focus {
+    outline: none;
+  }
+}
+input {
+  -webkit-appearance: none;
+  appearance: none;
+  &[type="search"] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+  }
+}
+::-webkit-search-decoration {
+  display:none;
+}

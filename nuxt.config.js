@@ -1,4 +1,11 @@
+import webpack from 'webpack'
+
+const apiUrl = process.env.apiUrl || 'http://localhost:3333'
+
 export default {
+  env: {
+    apiUrl,
+  },
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -29,25 +36,33 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    { src: '@/assets/fontawesome/fontawesome.min.css', lang: 'css' },
+    { src: '@/assets/styles/global.scss', lang: 'scss' },
+  ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: [
+    { src: '@/plugins/axios.js' },
+    { src: '@/plugins/vuelidate.js' },
+    { src: '@/plugins/vue-lazyload.client.js', client: true },
+    { src: '@/plugins/vue-directive-tooltip.js' },
+    { src: '@/mixins/global.js' },
+    { src: '@/components/global.js' },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
    */
-  components: true,
+  components: false,
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-    // Doc: https://github.com/nuxt-community/stylelint-module
-    '@nuxtjs/stylelint-module',
+    '@nuxtjs/eslint-module'
   ],
   /*
    ** Nuxt.js modules
@@ -56,15 +71,44 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    'cookie-universal-nuxt',
+    // Doc: https://www.npmjs.com/package/nuxt-user-agent
+    'nuxt-user-agent',
+    // Doc: https://www.npmjs.com/package/@nuxtjs/style-resources
+    '@nuxtjs/style-resources',
+    // Doc: https://www.npmjs.com/package/nuxt-webfontloader
+    'nuxt-webfontloader',
   ],
+  webfontloader: {
+    google: {
+      families: ['Roboto:300,400,500,700,900&display=swap'],
+    },
+  },
+  styleResources: {
+    scss: [
+      '@/assets/styles/variables/_fonts.scss',
+      '@/assets/styles/variables/_colors.scss',
+      '@/assets/styles/variables/_zIndex.scss',
+      '@/assets/styles/variables/_mixins.scss',
+    ],
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: apiUrl,
+  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)],
+    optimization: {
+      splitChunks: {
+        name: true,
+      },
+    },
+  },
 }
